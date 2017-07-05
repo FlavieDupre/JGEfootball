@@ -59,7 +59,7 @@ class MemberController extends Controller
                 ]
             ));
 
-            //Récupération les données POST de la demande
+            //Récupération des données POST de la demande
 			$form->handleRequest( $request );
 
 			if(count($form->getData()->getRole())) {
@@ -104,7 +104,7 @@ class MemberController extends Controller
                 ]
             ));
 
-        //Récupération les données POST de la demande
+        //Récupération des données POST de la demande
         $form->handleRequest( $request );
 
         // On vérifie que les valeurs entrées sont correctes

@@ -2,8 +2,6 @@
 
 namespace JgeBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Member
  */
@@ -30,7 +28,7 @@ class Member
     private $licenceNum;
 
     /**
-     * @var ArrayCollection
+     * @var array
      */
     private $role;
 
@@ -40,7 +38,7 @@ class Member
     private $dateOfBirth;
 
     /**
-     * @var ArrayCollection
+     * @var array
      */
     private $email;
 
@@ -69,12 +67,17 @@ class Member
      */
     private $heigth;
 
-	public function __construct()
-	{
-		$this->role   = new ArrayCollection();
-		$this->email = new ArrayCollection();
-		$this->telNumber = new ArrayCollection();
-	}
+
+    /**
+     * @var int
+     */
+    private $category;
+
+    /**
+     * @var array
+     */
+    private $convocations;
+
 
     /**
      * Get id
@@ -161,13 +164,13 @@ class Member
     /**
      * Set role
      *
-     * @param ArrayCollection $role
+     * @param array $role
      *
      * @return Member
      */
     public function setRole($role)
     {
-        $this->role->add($role);
+        $this->role[]=$role;
 
         return $this;
     }
@@ -175,11 +178,11 @@ class Member
     /**
      * Get role
      *
-     * @return ArrayCollection
+     * @return array
      */
     public function getRole()
     {
-        return $this->role->getValues();
+        return $this->role;
     }
 
     /**
@@ -348,6 +351,40 @@ class Member
     public function getHeigth()
     {
         return $this->heigth;
+    }
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     *
+     * @return Member
+     */
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getcategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Get convocations
+     *
+     * @return array
+     */
+    public function getconvocations()
+    {
+        return $this->convocations;
     }
 }
 

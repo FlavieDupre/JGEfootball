@@ -2,7 +2,6 @@
 
 namespace JgeBundle\Form;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -31,7 +30,7 @@ class MemberType extends AbstractType
                 'choices'=> array(
                     'Joueur'=>'player',
                     'Entraîneur'=>'coach',
-                    'Responsable'=>'responsible',
+                    'Responsable'=>'manager',
                     'Rédacteur'=>'author',
                 ),
                 'expanded' => true,
