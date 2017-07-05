@@ -1,0 +1,36 @@
+JgeBundle\Entity\Game:
+    type: entity
+    table: null
+    repositoryClass: JgeBundle\Repository\gameRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        convocation:
+            type: integer
+        competitionName:
+            type: string
+            length: 255
+            column: competition_name
+        competitionType:
+            type: string
+            length: '100'
+            column: competition_type
+        homeAwayGame:
+            type: boolean
+            column: home_away_game
+        opponent:
+            type: string
+            length: 255
+        score:
+            type: string
+            length: '10'
+            nullable: true
+        comment:
+            type: string
+            length: 255
+            nullable: true
+    lifecycleCallbacks: {  }

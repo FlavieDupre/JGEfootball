@@ -1,0 +1,20 @@
+JgeBundle\Entity\Sponsor:
+    type: entity
+    table: null
+    repositoryClass: JgeBundle\Repository\SponsorRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '100'
+        websiteLink:
+            type: string
+            length: 255
+            nullable: true
+            column: website_link
+    lifecycleCallbacks: {  }

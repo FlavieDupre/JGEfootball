@@ -1,0 +1,22 @@
+JgeBundle\Entity\Category_group:
+    type: entity
+    table: null
+    repositoryClass: JgeBundle\Repository\category_groupRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        manager:
+            type: string
+            length: '50'
+        categories:
+            type: array
+        coach:
+            type: array
+        name:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

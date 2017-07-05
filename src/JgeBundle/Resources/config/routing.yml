@@ -1,0 +1,31 @@
+jge_homepage:
+    path:     /
+    defaults: { _controller: JgeBundle:Default:index }
+
+jge_member:
+    path:     /membre
+    defaults: { _controller: JgeBundle:Member:index }
+
+jge_member_list:
+    path:     /membre/liste
+    defaults: { _controller: JgeBundle:Member:list }
+
+jge_member_view:
+    path:     /membre/detail/{id}
+    defaults: { _controller: JgeBundle:Member:view }
+
+jge_member_add:
+    path:     /membre/ajouter
+    defaults: { _controller: JgeBundle:Member:add }
+
+jge_member_update:
+    path:     /membre/modifier/{id}
+    defaults: { _controller: JgeBundle:Member:update }
+    requirements:
+            id: \d+
+
+jge_member_delete:
+    path:     /membre/supprimer/{id}
+    defaults: { _controller: JgeBundle:Member:delete }
+    requirements:
+            id: \d+

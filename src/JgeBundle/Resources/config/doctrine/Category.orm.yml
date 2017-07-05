@@ -1,0 +1,17 @@
+JgeBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: JgeBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        members:
+            type: array
+        name:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

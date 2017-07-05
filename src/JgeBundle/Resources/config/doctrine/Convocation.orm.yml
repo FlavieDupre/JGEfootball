@@ -1,0 +1,38 @@
+JgeBundle\Entity\Convocation:
+    type: entity
+    table: null
+    repositoryClass: JgeBundle\Repository\convocationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        coach:
+            type: integer
+        categoryGroup:
+            type: integer
+            column: category_group
+        players:
+            type: array
+        date:
+            type: string
+            length: '10'
+        gameTime:
+            type: string
+            length: '10'
+            column: game_time
+        meetingTime:
+            type: string
+            length: '10'
+            column: meeting_time
+        teamName:
+            type: string
+            length: '50'
+            column: team_name
+        gamePlace:
+            type: string
+            length: 255
+            column: game_place
+    lifecycleCallbacks: {  }

@@ -1,0 +1,46 @@
+JgeBundle\Entity\Member:
+    type: entity
+    table: null
+    repositoryClass: JgeBundle\Repository\MemberRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstname:
+            type: string
+            length: '50'
+        lastname:
+            type: string
+            length: '50'
+        licenceNum:
+            type: string
+            length: '12'
+            nullable: true
+            unique: true
+            column: licence_num
+        role:
+            type: array
+        dateOfBirth:
+            type: date
+        email:
+            type: array
+        password:
+            type: string
+            length: 255
+        telNumber:
+            type: array
+            column: tel_number
+        sex:
+            type: string
+            length: '1'
+        shoeSize:
+            type: integer
+            nullable: true
+            column: shoe_size
+        heigth:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }

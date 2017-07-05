@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}JGE Football {% endblock %}</title>
+
+    {% block stylesheets %}
+        {# On charge le CSS de bootstrap depuis le site directement #}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {% endblock %}
+</head>
+
+<body>
+<div class="container">
+    <div id="header" class="jumbotron">
+        <h1>JGE Football</h1>
+        <h2>Jeune Garde de l'Erdre · 2017 - 2018</h2>
+
+    </div>
+
+    <div class="row">
+        <div id="menu" class="col-md-3">
+            <h3>Membres</h3>
+
+
+        </div>
+        <div id="content" class="col-md-9">
+            {% block body %}
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="{{ path('jge_member_list') }}">Liste des membres</a></li>
+                    <li><a href="{{ path('jge_member_add') }}">Ajouter un membre</a></li>
+                </ul>
+            {% endblock %}
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>JEGE Football © {{ 'now'|date('Y') }}</p>
+    </footer>
+</div>
+
+</body>
+</html>
