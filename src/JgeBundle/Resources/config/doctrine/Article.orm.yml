@@ -9,9 +9,6 @@ JgeBundle\Entity\Article:
             generator:
                 strategy: AUTO
     fields:
-        author:
-            type: integer
-            nullable: true
         title:
             type: string
             length: 255
@@ -23,4 +20,11 @@ JgeBundle\Entity\Article:
             type: string
             length: 255
             nullable: true
+
+    manyToOne:
+        author:
+            targetEntity: JgeBundle\Entity\Member
+            joinColumn:
+                name: author
+                referencedColumnName: id
     lifecycleCallbacks: {  }

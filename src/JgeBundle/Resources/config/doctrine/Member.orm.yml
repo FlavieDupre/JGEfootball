@@ -43,4 +43,27 @@ JgeBundle\Entity\Member:
         heigth:
             type: integer
             nullable: true
+
+    manyToOne:
+        category:
+            targetEntity: JgeBundle\Entity\Category
+            inversedBy: members
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+
+    manyToMany:
+        convocations:
+            targetEntity: JgeBundle\Entity\Convocation
+            inversedBy: players
+
+    manyToOne:
+        category_group:
+            targetEntity: JgeBundle\Entity\Category_group
+            inversedBy: coach
+            joinColumn:
+                name: category_group_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }
+
+

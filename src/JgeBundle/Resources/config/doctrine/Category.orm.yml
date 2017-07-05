@@ -9,9 +9,23 @@ JgeBundle\Entity\Category:
             generator:
                 strategy: AUTO
     fields:
-        members:
-            type: array
         name:
             type: string
             length: '50'
+
+    oneToMany:
+        members:
+            targetEntity: JgeBundle\Entity\Member
+            mappedBy: category
+            joinColumn:
+                name: members
+                referencedColumnName: id
+
+    manyToOne:
+        category_group:
+            targetEntity: JgeBundle\Entity\Category_group
+            inversedBy: categories
+            joinColumn:
+                name: category_group_id
+                referencedColumnName: id
     lifecycleCallbacks: {  }

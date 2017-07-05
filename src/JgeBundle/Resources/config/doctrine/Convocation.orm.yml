@@ -9,13 +9,6 @@ JgeBundle\Entity\Convocation:
             generator:
                 strategy: AUTO
     fields:
-        coach:
-            type: integer
-        categoryGroup:
-            type: integer
-            column: category_group
-        players:
-            type: array
         date:
             type: string
             length: '10'
@@ -35,4 +28,18 @@ JgeBundle\Entity\Convocation:
             type: string
             length: 255
             column: game_place
+
+    oneToOne:
+        game:
+            targetEntity: JgeBundle\Entity\Game
+            mappedBy: id
+
+    manyToOne:
+        categoryGroup:
+            targetEntity: JgeBundle\Entity\category_group
+            inversedBy: convocations
+            joinColumn:
+                name: categoryGroup_id
+                referencedColumnName: id
+
     lifecycleCallbacks: {  }

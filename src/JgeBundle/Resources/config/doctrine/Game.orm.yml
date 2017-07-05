@@ -9,8 +9,7 @@ JgeBundle\Entity\Game:
             generator:
                 strategy: AUTO
     fields:
-        convocation:
-            type: integer
+
         competitionName:
             type: string
             length: 255
@@ -33,4 +32,10 @@ JgeBundle\Entity\Game:
             type: string
             length: 255
             nullable: true
+
+    oneToOne:
+        convocation:
+            targetEntity: JgeBundle\Entity\Convocation
+            inversedBy: id
+
     lifecycleCallbacks: {  }
