@@ -32,11 +32,13 @@
 
                 <div class="well">
                     <p>Licence n° : {{ member.licenceNum }}</p>
-                    {% for role in member %}
+                    <ul>
+                        {% for i in 0..member.role[0]|length-1 %}
                         <li>
-                            <p>Rôle(s) au sein du club : {{ role.role }}</p>
+                            <p>Rôle(s) au sein du club : {{ member.role[0][i] }} </p>
                         </li>
                     {% endfor %}
+                    </ul>
                     <p>Né(e) le : {{ member.dateOfBirth |date("d/m/Y")}}</p>
                     <p>Adresse(s) mail :{{ member.email }}</p>
                     <p>Mot de passe : {{ member.password }}</p>

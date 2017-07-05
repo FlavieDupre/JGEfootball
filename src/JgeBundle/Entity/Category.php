@@ -1,6 +1,9 @@
 <?php
 
+
 namespace JgeBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Category
@@ -12,15 +15,23 @@ class Category
      */
     private $id;
 
+
+
+    /**
+     * @var string
+     */
+    private $name;
+
+
     /**
      * @var array
      */
     private $members;
 
     /**
-     * @var string
+     * @var int
      */
-    private $name;
+    private $category_group;
 
 
     /**
@@ -36,11 +47,11 @@ class Category
     /**
      * Set members
      *
-     * @param array $members
+     * @param arrayCollection $members
      *
      * @return Category
      */
-    public function setMembers($members)
+    public function setMembers(Member $members)
     {
         $this->members = $members;
 
@@ -79,6 +90,30 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set category_group
+     *
+     * @param string $category_group
+     *
+     * @return Category
+     */
+    public function setCategory_group($category_group)
+    {
+        $this->category_group = $category_group;
+
+        return $this;
+    }
+
+    /**
+     * Get category_group
+     *
+     * @return int
+     */
+    public function getCategory_group()
+    {
+        return $this->category_group;
     }
 }
 

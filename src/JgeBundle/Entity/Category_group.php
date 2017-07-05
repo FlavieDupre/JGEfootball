@@ -1,7 +1,6 @@
 <?php
 
 namespace JgeBundle\Entity;
-
 /**
  * Category_group
  */
@@ -32,6 +31,10 @@ class Category_group
      */
     private $name;
 
+    /**
+     * @var array
+     */
+    private $convocations;
 
     /**
      * Get id
@@ -137,6 +140,30 @@ class Category_group
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set convocations
+     *
+     * @param array $convocations
+     *
+     * @return category_group
+     */
+    public function setConvocations($convocations)
+    {
+        $this->convocations = $convocations;
+
+        return $this;
+    }
+
+    /**
+     * Get convocations
+     *
+     * @return array
+     */
+    public function getConvocations()
+    {
+        return $this->convocations;
     }
 }
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace JgeBundle\Entity;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Convocation
  */
@@ -23,7 +23,7 @@ class Convocation
     private $categoryGroup;
 
     /**
-     * @var array
+     * @var ArrayCollection
      */
     private $players;
 
@@ -51,6 +51,11 @@ class Convocation
      * @var string
      */
     private $gamePlace;
+
+    /**
+     * @var int
+     */
+    private $game;
 
 
     /**
@@ -128,7 +133,7 @@ class Convocation
     /**
      * Get players
      *
-     * @return array
+     * @return arrayCollection
      */
     public function getPlayers()
     {
@@ -253,6 +258,30 @@ class Convocation
     public function getGamePlace()
     {
         return $this->gamePlace;
+    }
+
+    /**
+     * Get game
+     *
+     * @return int
+     */
+    public function getGame()
+    {
+        return $this->game;
+    }
+
+    /**
+     * Set game
+     *
+     * @param int $game
+     *
+     * @return convocation
+     */
+    public function setGame($game)
+    {
+        $this->game = $game;
+
+        return $this;
     }
 }
 
