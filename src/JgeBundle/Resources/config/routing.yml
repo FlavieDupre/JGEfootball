@@ -3,29 +3,29 @@ jge_homepage:
     defaults: { _controller: JgeBundle:Default:index }
 
 jge_member:
-    path:     /membre
+    path:     /admin/membre
     defaults: { _controller: JgeBundle:Member:index }
 
 jge_member_list:
-    path:     /membre/liste
+    path:     /admin/membre/liste
     defaults: { _controller: JgeBundle:Member:list }
 
 jge_member_view:
-    path:     /membre/detail/{id}
+    path:     /admin/membre/detail/{id}
     defaults: { _controller: JgeBundle:Member:view }
 
 jge_member_add:
-    path:     /membre/ajouter
+    path:     /admin/membre/ajouter
     defaults: { _controller: JgeBundle:Member:add }
 
 jge_member_update:
-    path:     /membre/modifier/{id}
+    path:     /admin/membre/modifier/{id}
     defaults: { _controller: JgeBundle:Member:update }
     requirements:
             id: \d+
 
 jge_member_delete:
-    path:     /membre/supprimer/{id}
+    path:     /admin/membre/supprimer/{id}
     defaults: { _controller: JgeBundle:Member:delete }
     requirements:
             id: \d+

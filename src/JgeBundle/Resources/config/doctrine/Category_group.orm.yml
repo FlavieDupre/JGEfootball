@@ -12,10 +12,6 @@ JgeBundle\Entity\Category_group:
         manager:
             type: string
             length: '50'
-        categories:
-            type: array
-        coach:
-            type: array
         name:
             type: string
             length: '50'
@@ -24,13 +20,9 @@ JgeBundle\Entity\Category_group:
         convocations:
             targetEntity: JgeBundle\Entity\Convocation
             mappedBy: category_group
-
-    oneToMany:
         categories:
             targetEntity: JgeBundle\Entity\Category
             mappedBy: category_group
-
-    oneToMany:
         coach:
             targetEntity: JgeBundle\Entity\Member
             mappedBy: category_group

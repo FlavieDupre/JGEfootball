@@ -21,18 +21,18 @@ JgeBundle\Entity\Member:
             nullable: true
             unique: true
             column: licence_num
-        role:
-            type: array
         dateOfBirth:
             type: date
-        email:
-            type: array
         password:
             type: string
             length: 255
-        telNumber:
-            type: array
-            column: tel_number
+        telNumber1:
+            type: string
+            length: 10
+        telNumber2:
+            type: string
+            length: 10
+            nullable: true
         sex:
             type: string
             length: '1'
@@ -42,6 +42,13 @@ JgeBundle\Entity\Member:
             column: shoe_size
         heigth:
             type: integer
+            nullable: true
+        email1:
+            type: string
+            length: 255
+        email2:
+            type: string
+            length: 255
             nullable: true
 
     manyToOne:
@@ -56,7 +63,9 @@ JgeBundle\Entity\Member:
         convocations:
             targetEntity: JgeBundle\Entity\Convocation
             inversedBy: players
-
+        role:
+            targetEntity: JgeBundle\Entity\Role
+            inversedBy: member
     manyToOne:
         category_group:
             targetEntity: JgeBundle\Entity\Category_group
@@ -64,6 +73,9 @@ JgeBundle\Entity\Member:
             joinColumn:
                 name: category_group_id
                 referencedColumnName: id
+
+
+
     lifecycleCallbacks: {  }
 
 

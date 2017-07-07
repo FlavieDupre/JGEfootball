@@ -2,16 +2,18 @@
 
 namespace JgeBundle\Form;
 
+use JgeBundle\Entity\Role;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Validator\Constraints;
+
 
 
 class MemberType extends AbstractType
@@ -21,31 +23,108 @@ class MemberType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+//        Création des champs du formulaire d'ajout de membre
         $builder
-            ->add('firstname', TextType::class, array('label'=>'Nom '))
-            ->add('lastname', TextType::class, array('label'=>'Prénom '))
-            ->add('licenceNum', TextType::class, array('label'=>'N° de licence '))
-            ->add('role', ChoiceType::class, array(
-                'label'=>'Rôle(s) ',
-                'choices'=> array(
-                    'Joueur'=>'player',
-                    'Entraîneur'=>'coach',
-                    'Responsable'=>'manager',
-                    'Rédacteur'=>'author',
-                ),
-                'expanded' => true,
-                'multiple'=> true,
+            ->add('firstname', TextType::class, array(
+                'label' => 'Nom ',
+                'constraints' => [
+                    new Constraints\NotBlank(),
+                    new Constraints\Length([
+                        'min' => 3,
+                        'max' => 50,
+                    ])],
             ))
-            ->add('dateOfBirth', DateType::class, array('label'=>'Date de naissance '))
-            ->add('email', EmailType::class, array('label'=>'Email(s) '))
-            ->add('password', TextType::class, array('label'=>'Mot de passe '))
-            ->add('telNumber', TextType::class, array('label'=>'N° de téléphone '))
-            ->add('sex', ChoiceType::class, array('label'=>'Sexe ', 'choices'=> array('Masculin'=>'m', 'Féminin'=>'f')))
-            ->add('shoeSize', TextType::class, array('label'=>'Pointure '))
-            ->add('heigth', TextType::class, array('label'=>'Taille (en cm) '));
+            ->add('lastname', TextType::class, array(
+                'label' => 'Prénom ',
+                'constraints' => [
+                    new Constraints\NotBlank(),
+                    new Constraints\Length([
+                        'min' => 3,
+                        'max' => 50,
+                    ])],
+            ))
+            ->add('licenceNum', TextType::class, array(
+                'label' => 'N° de licence ',
+                'constraints' => [
+                    new Constraints\NotBlank(),
+                    new Constraints\Length([
+                        'min' => 3,
+                        'max' => 12,
+                    ])],
+            ))
+            ->add('role', EntityType::class, array(
+                'class' => Role::class,
+                'choice_label' => 'name',
+                'multiple'      => true,
+                'expanded'      => true
+            ))
+            ->add('dateOfBirth', DateType::class, array(
+                'label' => 'Date de naissance ',
+                'years' => range(date('Y') - 70, date('Y')),
+            ))
+            ->add('email1', EmailType::class, array(
+                'label' => 'Email 1',
+                'attr' => array(
+                    'placeholder' => 'ex. : adresse@domaine.tld',
+                ),
+            ))
+            ->add('email2', EmailType::class, array(
+                'label' => 'Email 2 (optionnel)',
+                'required' => false,
+            ))
+            ->add('password', TextType::class, array(
+                'label' => 'Mot de passe '
+            ))
+            ->add('telNumber1', TextType::class, array(
+                'label' => 'N° de téléphone 1',
+                'constraints' => [
+                    new Constraints\NotBlank(),
+                    new Constraints\Length([
+                        'min' => 10,
+                        'max' => 10,
+                    ])],
+            ))
+            ->add('telNumber2', TextType::class, array(
+                'label' => 'N° de téléphone 2 (optionnel)',
+                'required' => false,
+                'constraints' => [
+                    new Constraints\Length([
+                        'min' => 10,
+                        'max' => 10,
+                    ])],
+
+            ))
+            ->add('sex', ChoiceType::class, array(
+                'label' => 'Sexe ',
+                'choices' => array(
+                    'Masculin' => 'm',
+                    'Féminin' => 'f')
+            ))
+            ->add('shoeSize', TextType::class, array(
+                'label' => 'Pointure ',
+                'constraints' => [
+                    new Constraints\NotBlank(),
+                    new Constraints\Length([
+                        'min' => 1,
+                        'max' => 2,
+                    ])],
+            ))
+            ->add('heigth', TextType::class, array(
+                'label' => 'Taille ',
+                'constraints' => [
+                    new Constraints\NotBlank(),
+                    new Constraints\Length([
+                        'min' => 2,
+                        'max' => 3,
+                    ])],
+                'attr' => array(
+                    'placeholder' => 'en cm',
+                ),
+
+            ))
+        ;
     }
 
-    
     /**
      * {@inheritdoc}
      */

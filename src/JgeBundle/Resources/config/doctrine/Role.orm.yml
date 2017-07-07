@@ -1,0 +1,19 @@
+JgeBundle\Entity\Role:
+    type: entity
+    table: null
+    repositoryClass: JgeBundle\Repository\RoleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '15'
+    manyToMany:
+        member:
+            targetEntity: JgeBundle\Entity\Member
+            mappedBy: role
+    lifecycleCallbacks: {  }

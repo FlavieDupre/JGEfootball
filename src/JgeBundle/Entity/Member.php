@@ -2,6 +2,9 @@
 
 namespace JgeBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
+
 /**
  * Member
  */
@@ -28,7 +31,7 @@ class Member
     private $licenceNum;
 
     /**
-     * @var array
+     * @var ArrayCollection
      */
     private $role;
 
@@ -38,9 +41,14 @@ class Member
     private $dateOfBirth;
 
     /**
-     * @var array
+     * @var string
      */
-    private $email;
+    private $email1;
+
+    /**
+     * @var string
+     */
+    private $email2;
 
     /**
      * @var string
@@ -48,9 +56,14 @@ class Member
     private $password;
 
     /**
-     * @var array
+     * @var string
      */
-    private $telNumber;
+    private $telNumber1;
+
+    /**
+     * @var string
+     */
+    private $telNumber2;
 
     /**
      * @var string
@@ -77,6 +90,11 @@ class Member
      * @var array
      */
     private $convocations;
+
+    public function __construct()
+    {
+        $this->role = new ArrayCollection();
+    }
 
 
     /**
@@ -162,27 +180,34 @@ class Member
     }
 
     /**
-     * Set role
-     *
-     * @param array $role
-     *
-     * @return Member
-     */
-    public function setRole($role)
-    {
-        $this->role[]=$role;
-
-        return $this;
-    }
-
-    /**
      * Get role
      *
-     * @return array
+     * @return ArrayCollection
      */
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Set role
+     *
+     * @param Role $role
+     *
+     * @return Member
+     */
+
+
+    public function setRole(Role $role)
+    {
+        if($role !== $this->role){
+            $this->role = $role;
+            if (!$role){
+                $role->addMember($this);
+            }
+        }
+
+        return $this;
     }
 
     /**
@@ -210,27 +235,51 @@ class Member
     }
 
     /**
-     * Set email
+     * Set email1
      *
-     * @param array $email
+     * @param string $email1
      *
      * @return Member
      */
-    public function setEmail($email)
+    public function setEmail1($email)
     {
-        $this->email = $email;
+        $this->email1 = $email;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get email1
      *
-     * @return array
+     * @return string
      */
-    public function getEmail()
+    public function getEmail1()
     {
-        return $this->email;
+        return $this->email1;
+    }
+
+    /**
+     * Set email2
+     *
+     * @param string $email2
+     *
+     * @return Member
+     */
+    public function setEmail2($email)
+    {
+        $this->email2 = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email2
+     *
+     * @return string
+     */
+    public function getEmail2()
+    {
+        return $this->email2;
     }
 
     /**
@@ -258,27 +307,51 @@ class Member
     }
 
     /**
-     * Set telNumber
+     * Set telNumber1
      *
-     * @param array $telNumber
+     * @param string $telNumber1
      *
      * @return Member
      */
-    public function setTelNumber($telNumber)
+    public function setTelNumber1($telNumber)
     {
-        $this->telNumber = $telNumber;
+        $this->telNumber1 = $telNumber;
 
         return $this;
     }
 
     /**
-     * Get telNumber
+     * Get telNumber1
      *
-     * @return array
+     * @return string
      */
-    public function getTelNumber()
+    public function getTelNumber1()
     {
-        return $this->telNumber;
+        return $this->telNumber1;
+    }
+
+    /**
+     * Set telNumber2
+     *
+     * @param string $telNumber2
+     *
+     * @return Member
+     */
+    public function setTelNumber2($telNumber)
+    {
+        $this->telNumber2 = $telNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get telNumber2
+     *
+     * @return string
+     */
+    public function getTelNumber2()
+    {
+        return $this->telNumber2;
     }
 
     /**
